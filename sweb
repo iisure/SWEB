@@ -17,7 +17,7 @@ while :; do echo
 	fi
 done
 
-cgipid=ps -ef | grep -v grep | grep -i "CGIHTTPServer" | awk '{print $2}' 
+cgipid=$(ps -ef | grep -v grep | grep -i "CGIHTTPServer" | awk '{print $2}')
 
 if [[ ${choice} == 1 ]];then
     if [[ cgipid == "" ]];then
@@ -25,11 +25,14 @@ if [[ ${choice} == 1 ]];then
         screen -dmS SWEB python CGIHTTPServer.py
     fi
     service caddy start
+    /etc/init.d/shadowsocks start
 fi
 
 if [[ ${choice} == 2 ]];then
     if [[ cgipid != "" ]];then
         kill -s 9 ${cgipid}
+        screen -wipe SWEB
     fi
     service caddy stop
+    /etc/init.d/shadowsocks stop
 fi

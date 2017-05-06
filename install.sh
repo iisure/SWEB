@@ -31,6 +31,17 @@ else
     kill -9 $$
 fi
 
+echo "Let's Setup the Username and Password for your webpanel'"
+
+read -p "Please input your web username：" webuser
+read -p "Please input your web password：" webpasswd
+
+
+#Install SSR (Powered By Teddysun : https://shadowsocks.be/9.html)
+wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/shadowsocks_install/master/shadowsocksR.sh
+chmod +x shadowsocksR.sh
+bash shadowsocksR.sh
+rm -rf shadowsocksR.sh
 
 #Install Basic Tools
 if [[ ${OS} == Ubuntu ]];then
@@ -39,7 +50,7 @@ if [[ ${OS} == Ubuntu ]];then
 	apt-get install python-pip -y
 	apt-get install git -y
 	apt-get install language-pack-zh-hans -y
-    apt-get install build-essential screen curl -y
+    apt-get install screen curl -y
 fi
 if [[ ${OS} == CentOS ]];then
 	yum install python screen curl -y
@@ -52,17 +63,11 @@ if [[ ${OS} == Debian ]];then
 	apt-get install python screen curl -y
 	apt-get install python-pip -y
 	apt-get install git -y
-    apt-get install build-essential -y
+    apt-get install -y
 fi
 
-#Install SSR (Powered By Teddysun : https://shadowsocks.be/9.html)
-wget https://raw.githubusercontent.com/FunctionClub/shadowsocks_install/master/shadowsocksR.sh
-chmod +x shadowsocksR.sh
-bash shadowsocksR.sh
-rm -rf shadowsocksR.sh
-
 #Install Caddy (Powered By Toyo : https://doub.io/shell-jc1/)
-wget -N --no-check-certificate https://softs.pw/Bash/caddy_install.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/caddy_install.sh
 chmod +x caddy_install.sh && bash caddy_install.sh install http.filemanager
 rm -rf caddy_install.sh
 
@@ -73,6 +78,7 @@ chmod +x /usr/local/SWEB/cgi-bin
 
 #Configure Caddy Proxy
 echo ":80 {
+ basicauth / $webuser $webpasswd
  proxy / http://127.0.0.1:8000
 }" > /usr/local/caddy/Caddyfile
 service caddy restart
@@ -86,4 +92,6 @@ cd /usr/local/SWEB
 screen -dmS SWEB python CGIHTTPServer.py
 
 #Install OK
-echo "Install OK! Enjoy!"
+echo "Install Finished!"
+echo ''
+echo 'Visit http://your ip to Enjoy!'
