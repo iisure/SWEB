@@ -1,0 +1,35 @@
+#!/bin/bash
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+#Check Root
+[ $(id -u) != "0" ] && { echo "Error: You must be root to run this script"; exit 1; }
+
+
+echo '1.开启SWEB'
+echo '2.关闭SWEB'
+
+while :; do echo
+	read -p "请选择你要的功能：" choice
+	if [[ ! $choice =~ ^[1-2]$ ]]; then
+		echo "输入错误! 请输入正确的数字!"
+	else
+		break	
+	fi
+done
+
+cgipid=ps -ef | grep -v grep | grep -i "CGIHTTPServer" | awk '{print $2}' 
+
+if [[ ${choice} == 1 ]];then
+    if [[ cgipid == "" ]];then
+        cd /usr/local/SWEB
+        screen -dmS SWEB python CGIHTTPServer.py
+    fi
+    service caddy start
+fi
+
+if [[ ${choice} == 2 ]];then
+    if [[ cgipid != "" ]];then
+        kill -s 9 ${cgipid}
+    fi
+    service caddy stop
+fi
