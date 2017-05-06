@@ -12,7 +12,7 @@ html = '''
 <title>SWEB管理面板 - 清空日志</title>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,9 +80,9 @@ html = '''
 </footer>
 <!-- / FOOTER --> 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="/js/jquery-1.11.3.min.js"></script> 
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="/js/bootstrap.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </body>
 </html>
 '''

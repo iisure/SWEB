@@ -12,7 +12,7 @@ html = '''
 <title>SWEB管理面板 - 软件下载</title>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css">
 
 <!-- FontAwesome -->
 <link rel="stylesheet" href="/css/font-awesome.css">
@@ -38,7 +38,7 @@ html = '''
         <li><a href="index.py">服务信息</a></li>
         <li><a href="setpage.py">服务器设置</a></li>
         <li><a href="log.py">运行日志</a></li>
-        <li class="active"><a href="app.html">软件下载<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="app.py">软件下载<span class="sr-only">(current)</span></a></li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
         <li> </li>
@@ -102,9 +102,9 @@ html = '''
 </footer>
 <!-- / FOOTER --> 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="/js/jquery-1.11.3.min.js"></script> 
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="/js/bootstrap.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </body>
 </html>
 '''
