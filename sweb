@@ -7,6 +7,8 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 echo '1.开启SWEB'
 echo '2.关闭SWEB'
+echo '3.修改网页密码'
+
 
 while :; do echo
 	read -p "请选择你要的功能：" choice
@@ -35,4 +37,16 @@ if [[ ${choice} == 2 ]];then
     fi
     service caddy stop
     /etc/init.d/shadowsocks stop
+fi
+
+if [[ ${choice} == 3 ]];then
+    read -p "请输入新的面板用户名：" webuser
+    read -p "请输入新的面板密码：" webpassword
+    rm -rf /usr/local/caddy/Caddyfile
+echo ":80 {
+ basicauth / $webuser $webpasswd
+ proxy / http://127.0.0.1:8000
+}" > /usr/local/caddy/Caddyfile
+    service caddy restart
+    echo "修改成功！"
 fi
