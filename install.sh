@@ -91,6 +91,10 @@ chmod +x /usr/local/bin/sweb
 cd /usr/local/SWEB
 screen -dmS SWEB python CGIHTTPServer.py
 
+#Setup iptables rules
+iptables -I INPUT -p tcp --dport 8000 -j DROP
+iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
+
 #Install OK
 echo "Install Finished!"
 echo ''

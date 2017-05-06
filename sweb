@@ -28,6 +28,8 @@ if [[ ${choice} == 1 ]];then
     fi
     service caddy start
     /etc/init.d/shadowsocks start
+    iptables -I INPUT -p tcp --dport 8000 -j DROP
+    iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
 fi
 
 if [[ ${choice} == 2 ]];then
