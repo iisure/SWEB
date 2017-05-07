@@ -48,9 +48,9 @@ header = '''
         <li> </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">菜单 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">停止SSR服务器</a> </li>
-            <li><a href="#">启动SSR服务器</a> </li>
-            <li><a href="#">重启SSR服务器</a> </li>
+            <li><a href="server.py?action=stop">停止SSR服务器</a> </li>
+            <li><a href="server.py?action=start">启动SSR服务器</a> </li>
+            <li><a href="server.py?action=restart">重启SSR服务器</a> </li>
             <li role="separator" class="divider"></li>
             <li><a href="https://github.com/FunctionClub/SWEB">关于</a> </li>
             <li><a href="support.py">支持赞助</a> </li>
