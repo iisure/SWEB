@@ -94,6 +94,7 @@ screen -dmS SWEB python CGIHTTPServer.py
 #Setup iptables rules
 iptables -I INPUT -p tcp --dport 8000 -j DROP
 iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 
 #Install OK
 echo "Install Finished!"
