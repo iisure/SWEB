@@ -39,23 +39,23 @@ wget -N --no-check-certificate  https://raw.githubusercontent.com/FunctionClub/S
 
 SSR控制菜单：
 
-![1](/Users/wmy/Desktop/SWEB/1.png)
+![1](1.png)
 
 服务器信息页
 
-![2](/Users/wmy/Desktop/SWEB/2.png)
+![2](2.png)
 
 服务器设置页面：
 
-![3](/Users/wmy/Desktop/SWEB/3.png)
+![3](3.png)
 
 运行日志：
 
-![4](/Users/wmy/Desktop/SWEB/4.png)
+![4](4.png)
 
 客户端下载页面（其实只是觉得好看，顺手拿了过来
 
-![5](/Users/wmy/Desktop/SWEB/5.png)
+![5](5.png)
 
 
 
