@@ -47,14 +47,14 @@ def set(setport,setpassword,setmethod,setprotocol,setprotocol_param,setobfs,seto
 
 
 def stopss():
-    os.system('/etc/init.d/shadowsocks stop')
+    os.system('/etc/init.d/shadowsocks stop >/dev/null 2>&1')
 
 def startss():
-    os.system('/etc/init.d/shadowsocks start')
+    os.system('/etc/init.d/shadowsocks start >/dev/null 2>&1')
     openiptables(server_port)
 
 def restartss():
-    os.system('/etc/init.d/shadowsocks restart')
+    os.system('/etc/init.d/shadowsocks restart >/dev/null 2>&1')
     openiptables(server_port)
 
 def getip():
