@@ -53,21 +53,21 @@ rm -rf shadowsocksR.sh
 #Install Basic Tools
 if [[ ${OS} == Ubuntu ]];then
 	apt-get update
-	apt-get install python -y
+	apt-get install python zip -y
 	apt-get install python-pip -y
 	apt-get install git -y
 	apt-get install language-pack-zh-hans -y
     apt-get install screen curl -y
 fi
 if [[ ${OS} == CentOS ]];then
-	yum install python screen curl -y
+	yum install python screen curl zip -y
 	yum install python-setuptools -y && easy_install pip -y
 	yum install git -y
     yum groupinstall "Development Tools" -y
 fi
 if [[ ${OS} == Debian ]];then
 	apt-get update
-	apt-get install python screen curl -y
+	apt-get install python screen curl zip -y
 	apt-get install python-pip -y
 	apt-get install git -y
     apt-get install -y
@@ -102,6 +102,13 @@ screen -dmS SWEB python CGIHTTPServer.py
 iptables -I INPUT -p tcp --dport 8000 -j DROP
 iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 32000 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 32000 -j ACCEPT
+
+#Setup V2ray
+cp /usr/local/SWEB/myv2ray.json /etc/v2ray/
+rm -rf /etc/v2ray/config.json && cp /usr/local/SWEB/config.json /etc/v2ray/config.json
+service v2ray restart
 
 #Install OK
 echo "Install Finished!"

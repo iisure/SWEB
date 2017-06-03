@@ -1,33 +1,23 @@
 
-    {
-  "log": {
-    "loglevel": "info"
+    {"log" : {
+    "access": "/var/log/v2ray/access.log",
+    "error": "/var/log/v2ray/error.log",
+    "loglevel": "warning"
   },
   "inbound": {
-    "port": 1080,
-    "listen": "127.0.0.1",
-    "protocol": "2",
-    "settings": {
-      "auth": "noauth",
-      "udp": true,
-      "ip": "127.0.0.1"
-    }
-  },
-  "outbound": {
+    "port": 32000,
     "protocol": "vmess",
     "settings": {
-        "vnext": [
+        "clients": [
             {
-                "address": "138.197.206.80",
-                "port": 32000,
-                "users": [
-                    {
-                        "id": "a8b61e9c-7d98-40d0-be6d-47d8039471aa",
-                        "alterId": 100
-                    }
-                ]
+                "id": "a8b61e9c-7d98-40d0-be6d-47d8039471aa",
+                "level": 1,
+                "alterId": 100
             }
-        ]
+        ],
+        "detour": {
+            "to": "detour"
+        }
     }
         ,
     "streamSettings": {
@@ -66,35 +56,25 @@
       }
     }
         
-        ,
-    "mux": {
-      "enabled": true
-    }
-        
-    
   },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  },
+
+      
+
   "outboundDetour": [
     {
-      "protocol": "freedom",
+      "protocol": "blackhole",
       "settings": {},
-      "tag": "direct"
+      "tag": "blocked"
     }
   ],
-  "dns": {
-    "servers": [
-      "8.8.8.8",
-      "8.8.4.4",
-      "localhost"
-    ]
-  },
   "routing": {
     "strategy": "rules",
     "settings": {
       "rules": [
-        {
-          "type": "chinasites",
-          "outboundTag": "direct"
-        },
         {
           "type": "field",
           "ip": [
@@ -114,15 +94,10 @@
             "fc00::/7",
             "fe80::/10"
           ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "chinaip",
-          "outboundTag": "direct"
+          "outboundTag": "blocked"
         }
       ]
     }
   }
 }
-
     
