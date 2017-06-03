@@ -120,26 +120,37 @@ rm -rf /usr/local/SWEB/v2ray-client/client.zip && cd /usr/local/SWEB/ && zip -r 
 #Start when boot
 if [[ ${OS} == Ubuntu || ${OS} == Debian ]];then
     echo "
-    iptables -I INPUT -p tcp --dport 8000 -j DROP
-    iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
-    iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-    cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
-    service v2ray start
-    service caddy start
-    " > /etc/init.d/bootsweb
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          SWEB
+# Required-Start: $local_fs $remote_fs
+# Required-Stop: $local_fs $remote_fs
+# Should-Start: $network
+# Should-Stop: $network
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description: SWEB
+# Description: SWEB
+### END INIT INFO
+iptables -I INPUT -p tcp --dport 8000 -j DROP
+iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
+service v2ray start
+service caddy start" > /etc/init.d/bootsweb
     chmod 755 /etc/init.d/bootsweb
     cd /etc/init.d && update-rc.d bootsweb defaults 95
 fi
 
 if [[ ${OS} == CentOS ]];then
     echo "
-    iptables -I INPUT -p tcp --dport 8000 -j DROP
-    iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
-    iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-    cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
-    service v2ray start
-    service caddy start
-    " > /etc/rc.d/init.d/bootsweb
+iptables -I INPUT -p tcp --dport 8000 -j DROP
+iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
+service v2ray start
+service caddy start
+" > /etc/rc.d/init.d/bootsweb
     chmod +x  /etc/rc.d/init.d/bootsweb
     echo "/etc/rc.d/init.d/bootsweb" >> /etc/rc.d/rc.local
     chmod +x /etc/rc.d/rc.local
