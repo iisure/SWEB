@@ -115,6 +115,7 @@ wget -N --no-check-certificate https://github.com/v2ray/v2ray-core/releases/down
 unzip v2ray-windows-32.zip && rm -rf v2ray-windows-32.zip
 cd v2ray-${VER}-windows-32 && mv v2ray.exe /usr/local/SWEB/v2ray-client/ && mv wv2ray.exe /usr/local/SWEB/v2ray-client/
 cd .. && rm -rf v2ray-${VER}-windows-32
+rm -rf /usr/local/SWEB/v2ray-client/client.zip && cd /usr/local/SWEB/ && zip -r /usr/local/SWEB/client.zip v2ray-client/ && mv /usr/local/SWEB/client.zip /usr/local/SWEB/v2ray-client/
 
 #Install OK
 echo "Install Finished!"
