@@ -7,6 +7,7 @@ import commands
 import base64
 #打开并且读取JSON配置文件
 jsonfile = file("/etc/shadowsocks.json")
+
 myjson = json.load(jsonfile)
 
 #将配置文件内容整理导入
@@ -85,3 +86,4 @@ def getssrlink():
 def clearhistory():
     os.system('rm -rf /var/log/shadowsocksr.log')
     os.system('touch /var/log/shadowsocksr.log')
+

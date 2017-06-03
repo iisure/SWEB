@@ -1,0 +1,7 @@
+{
+ "mainport": "32000", 
+ "type": "2", 
+ "mux": "1", 
+ "transport": "2", 
+ "localport": "1080"
+}

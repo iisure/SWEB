@@ -26,26 +26,32 @@ html='''
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="#">SSR管理面板</a></div>
+      <a class="navbar-brand" href="#">SWEB管理面板</a></div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.py">服务信息<span class="sr-only">(current)</span></a></li>
-        <li><a href="setpage.py">服务器设置</a></li>
+        <li>
+              <a href="#"  data-toggle="dropdown" >SSR<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+        <li><a href="index.py">服务器信息<span class="sr-only">(current)</span></a></li>
+        <li><a href="setpage.py">服务设置</a></li>
         <li><a href="log.py">运行日志</a></li>
+        <li role="separator" class="divider"></li>
+            <li><a href="server.py?action=stop">停止SSR服务器</a> </li>
+            <li><a href="server.py?action=start">启动SSR服务器</a> </li>
+            <li><a href="server.py?action=restart">重启SSR服务器</a> </li>
+              </ul>
+            </li>
+            <li><a href="v2ray.py">V2ray</a></li>
         <li><a href="app.py">软件下载</a></li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
         <li> </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">菜单 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="server.py?action=stop">停止SSR服务器</a> </li>
-            <li><a href="server.py?action=start">启动SSR服务器</a> </li>
-            <li><a href="server.py?action=restart">重启SSR服务器</a> </li>
-            <li role="separator" class="divider"></li>
-            <li><a href="https://github.com/FunctionClub/SWEB">关于我们</a> </li>
-            <li><a href="support.py">支持赞助</a> </li>
+            <li><a href="https://github.com/FunctionClub/SWEB">关于</a> </li>
+            <li class="active"><a href="support.py">支持赞助<span class="sr-only">(current)</span></a> </li>
           </ul>
         </li>
       </ul>
