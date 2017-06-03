@@ -119,7 +119,7 @@ rm -rf /usr/local/SWEB/v2ray-client/client.zip && cd /usr/local/SWEB/ && zip -r 
 
 #Start when boot
 if [[ ${OS} == Ubuntu || ${OS} == Debian ]];then
-    echo "
+    cat >/etc/init.d/bootsweb <<EOF
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          SWEB
@@ -137,9 +137,12 @@ iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
 service v2ray start
-service caddy start" > /etc/init.d/bootsweb
+service caddy start
+EOF
     chmod 755 /etc/init.d/bootsweb
-    cd /etc/init.d && update-rc.d bootsweb defaults 95
+    chmod +x /etc/init.d/bootsweb
+    cd /etc/init.d
+    update-rc.d bootsweb defaults 95
 fi
 
 if [[ ${OS} == CentOS ]];then
