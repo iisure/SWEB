@@ -114,14 +114,19 @@ html = '''
 
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">主端口号</label>
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 			<input type="text" class="form-control" name="mainport" 
-				   placeholder="请输入主端口号" value="%s"> 
-		</div>
-	</div>
+				   placeholder="请输入主端口号" value="%s">
+</div>	<div class="col-sm-1">
+
+<button type="button" class="btn btn-default" title="主端口号"
+                        data-container="body" data-toggle="popover" data-placement="right"
+                        data-content="服务器上开放的端口，用于连接你的电脑和服务器。">?</button>
+</div>
+</div>
   	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">传输协议</label>
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 					<select class="form-control" name="transport">
 			<option value="%s">%s</option>
 			<option vaule="1">TCP</option>
@@ -129,11 +134,18 @@ html = '''
 			<option value="3">mKCP</option>
 		</select>
 		</div>
+<div class="col-sm-1">
+
+<button type="button" class="btn btn-default" title="传输协议"
+                        data-container="body" data-toggle="popover" data-placement="right"
+                        data-content="服务器与客户端电脑之间的通讯协议，TCP为默认协议，HTTP伪装是伪装成访问正常网站，mKCP是修改版的KCP协议">?</button>
+</div>
+
 	</div>
 
 <div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">Mux.Cool</label>
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 					<select class="form-control" name="mux">
         <option value="%s">%s</option>
 			<option value="1">启用</option>
@@ -141,11 +153,18 @@ html = '''
 
 		</select>
 		</div>
+<div class="col-sm-1">
+
+<button type="button" class="btn btn-default" title="Mux多路复用"
+                        data-container="body" data-toggle="popover" data-placement="right"
+                        data-content="试验阶段，开启后可以流畅观看直播等网站">?</button>
+</div>
+
 	</div>
 
     	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">代理模式</label>
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 					<select class="form-control" name="type">
         <option>%s</option>
 			<option>socks</option>
@@ -153,17 +172,30 @@ html = '''
 
 		</select>
 		</div>
+<div class="col-sm-1">
+
+<button type="button" class="btn btn-default" title="代理模式"
+                        data-container="body" data-toggle="popover" data-placement="right"
+                        data-content="客户端上的代理协议选自，可选择 Socks代理 或者 http代理">?</button>
+</div>
+
 	</div>
   <div class="form-group">
-		<label for="firstname" class="col-sm-2 control-label">代理端口</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" name="localport" 
+	<label for="firstname" class="col-sm-2 control-label">代理端口</label>
+	
+	<div class="col-sm-8">
+			<input type="text" class="form-control" name="localport" width="80%%" 
 				   placeholder="请输入本地代理端口" value="%s"> 
-		</div>
+	</div>	
+<div class="col-sm-1"><button type="button" width="20%%" class="btn btn-default" title="代理端口"
+                        data-container="body" data-toggle="popover" data-placement="right"
+                        data-content="本地客户端的代理端口，默认设置为1080">?</button>
+</div>
+
 	</div>
 
 
-<div class="col-md-9"></div>
+<div class="col-md-7"></div>
 <button type="submit" class="btn btn-success">保存按钮</button>
 <div class="col-md-1"></div>
 
@@ -261,6 +293,12 @@ html = '''
 <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+<script>
+$(function () { 
+	$("[data-toggle='popover']").popover();
+});
+	</script>
+
 </body>
 </html>
 '''
