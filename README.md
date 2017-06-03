@@ -43,6 +43,10 @@ wget -N --no-check-certificate  https://raw.githubusercontent.com/FunctionClub/S
 
 ## 截图
 
+V2Ray页面：
+
+![6](6.jpg)
+
 SSR控制菜单：
 
 ![1](1.png)
