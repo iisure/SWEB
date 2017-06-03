@@ -117,6 +117,33 @@ cd v2ray-${VER}-windows-32 && mv v2ray.exe /usr/local/SWEB/v2ray-client/ && mv w
 cd .. && rm -rf v2ray-${VER}-windows-32
 rm -rf /usr/local/SWEB/v2ray-client/client.zip && cd /usr/local/SWEB/ && zip -r /usr/local/SWEB/client.zip v2ray-client/ && mv /usr/local/SWEB/client.zip /usr/local/SWEB/v2ray-client/
 
+#Start when boot
+if [[ ${OS} == Ubuntu || ${OS} == Debian ]];then
+    echo "
+    iptables -I INPUT -p tcp --dport 8000 -j DROP
+    iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
+    iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+    cd /usr/local/SWEB &&
+    screen -dmS SWEB python CGIHTTPServer.py
+    " > /etc/init.d/bootsweb
+    chmod 755 /etc/init.d/bootsweb
+    cd /etc/init.d && update-rc.d bootsweb defaults 95
+fi
+
+if [[ ${OS} == CentOS ]];then
+    echo "
+    iptables -I INPUT -p tcp --dport 8000 -j DROP
+    iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
+    iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+    cd /usr/local/SWEB &&
+    screen -dmS SWEB python CGIHTTPServer.py
+    " > /etc/rc.d/init.d/bootsweb
+    chmod +x  /etc/rc.d/init.d/bootsweb
+    cd /etc/rc.d/init.d
+    chkconfig --add bootsweb
+    chkconfig bootsweb on
+fi
+
 #Install OK
 echo "Install Finished!"
 echo ''
