@@ -6,7 +6,7 @@
   "inbound": {
     "port": 1080,
     "listen": "127.0.0.1",
-    "protocol": "2",
+    "protocol": "http",
     "settings": {
       "auth": "noauth",
       "udp": true,
