@@ -123,8 +123,9 @@ if [[ ${OS} == Ubuntu || ${OS} == Debian ]];then
     iptables -I INPUT -p tcp --dport 8000 -j DROP
     iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
     iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-    cd /usr/local/SWEB &&
-    screen -dmS SWEB python CGIHTTPServer.py
+    cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
+    service v2ray start
+    service caddy start
     " > /etc/init.d/bootsweb
     chmod 755 /etc/init.d/bootsweb
     cd /etc/init.d && update-rc.d bootsweb defaults 95
@@ -135,13 +136,13 @@ if [[ ${OS} == CentOS ]];then
     iptables -I INPUT -p tcp --dport 8000 -j DROP
     iptables -I INPUT -s 127.0.0.1 -p tcp --dport 8000 -j ACCEPT
     iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-    cd /usr/local/SWEB &&
-    screen -dmS SWEB python CGIHTTPServer.py
+    cd /usr/local/SWEB && screen -dmS SWEB python CGIHTTPServer.py
+    service v2ray start
+    service caddy start
     " > /etc/rc.d/init.d/bootsweb
     chmod +x  /etc/rc.d/init.d/bootsweb
-    cd /etc/rc.d/init.d
-    chkconfig --add bootsweb
-    chkconfig bootsweb on
+    echo "/etc/rc.d/init.d/bootsweb" >> /etc/rc.d/rc.local
+    chmod +x /etc/rc.d/rc.local
 fi
 
 #Install OK
