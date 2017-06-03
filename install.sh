@@ -53,21 +53,21 @@ rm -rf shadowsocksR.sh
 #Install Basic Tools
 if [[ ${OS} == Ubuntu ]];then
 	apt-get update
-	apt-get install python zip -y
+	apt-get install python zip unzip -y
 	apt-get install python-pip -y
 	apt-get install git -y
 	apt-get install language-pack-zh-hans -y
     apt-get install screen curl -y
 fi
 if [[ ${OS} == CentOS ]];then
-	yum install python screen curl zip -y
+	yum install python screen curl zip unzip -y
 	yum install python-setuptools -y && easy_install pip -y
 	yum install git -y
     yum groupinstall "Development Tools" -y
 fi
 if [[ ${OS} == Debian ]];then
 	apt-get update
-	apt-get install python screen curl zip -y
+	apt-get install python screen curl zip unzip -y
 	apt-get install python-pip -y
 	apt-get install git -y
     apt-get install -y
@@ -110,6 +110,11 @@ bash <(curl -L -s https://install.direct/go.sh)
 cp /usr/local/SWEB/myv2ray.json /etc/v2ray/
 rm -rf /etc/v2ray/config.json && cp /usr/local/SWEB/config.json /etc/v2ray/config.json
 service v2ray restart
+VER="$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep 'tag_name' | cut -d\" -f4)"
+wget https://github.com/v2ray/v2ray-core/releases/download/${VER}/v2ray-windows-32.zip
+unzip v2ray-windows-32.zip && rm -rf v2ray-windows-32.zip
+cd v2ray-${VER}-windows-32 && mv v2ray.exe /usr/local/SWEB/v2ray-client/ && mv wv2ray.exe /usr/local/SWEB/v2ray-client/
+cd .. && rm -rf v2ray-${VER}-windows-32
 
 #Install OK
 echo "Install Finished!"
