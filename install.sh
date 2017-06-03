@@ -111,7 +111,7 @@ cp /usr/local/SWEB/myv2ray.json /etc/v2ray/
 rm -rf /etc/v2ray/config.json && cp /usr/local/SWEB/config.json /etc/v2ray/config.json
 service v2ray restart
 VER="$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep 'tag_name' | cut -d\" -f4)"
-wget https://github.com/v2ray/v2ray-core/releases/download/${VER}/v2ray-windows-32.zip
+wget -N --no-check-certificate https://github.com/v2ray/v2ray-core/releases/download/${VER}/v2ray-windows-32.zip
 unzip v2ray-windows-32.zip && rm -rf v2ray-windows-32.zip
 cd v2ray-${VER}-windows-32 && mv v2ray.exe /usr/local/SWEB/v2ray-client/ && mv wv2ray.exe /usr/local/SWEB/v2ray-client/
 cd .. && rm -rf v2ray-${VER}-windows-32
