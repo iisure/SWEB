@@ -106,6 +106,7 @@ iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 32000 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 32000 -j ACCEPT
 
 #Setup V2ray
+bash <(curl -L -s https://install.direct/go.sh)
 cp /usr/local/SWEB/myv2ray.json /etc/v2ray/
 rm -rf /etc/v2ray/config.json && cp /usr/local/SWEB/config.json /etc/v2ray/config.json
 service v2ray restart
