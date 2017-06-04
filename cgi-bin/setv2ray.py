@@ -30,11 +30,7 @@ else:
     exit()
 
 
-gettype = form['type'].value
-if gettype=="socks":
-    sendtype="1"
-if gettype=="http":
-    sendtype="2"
+sendtype = form['type'].value
 
 header = '''
 <!DOCTYPE html>
