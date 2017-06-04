@@ -152,10 +152,7 @@ def genjson(getmainport,gettransport,gettype,getmux,getlocalport):
                 "level": 1,
                 "alterId": 100
             }
-        ],
-        "detour": {
-            "to": "detour"
-        }
+        ]
     }''' + str(gentransport) +'''
   },
   "outbound": {
