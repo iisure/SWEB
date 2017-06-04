@@ -14,10 +14,7 @@
                 "level": 1,
                 "alterId": 100
             }
-        ],
-        "detour": {
-            "to": "detour"
-        }
+        ]
     }
         ,
     "streamSettings": {
