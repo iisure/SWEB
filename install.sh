@@ -45,7 +45,7 @@ read -p "Please input your web password：" webpasswd
 
 
 #Install SSR (Powered By Teddysun : https://shadowsocks.be/9.html)
-wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/shadowsocks_install/master/shadowsocksR.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh
 chmod +x shadowsocksR.sh
 bash shadowsocksR.sh
 rm -rf shadowsocksR.sh
@@ -80,7 +80,7 @@ rm -rf caddy_install.sh
 
 #Install SWEB
 cd /usr/local/
-git clone https://github.com/FunctionClub/SWEB
+git clone https://github.com/iisure/SWEB
 chmod +x /usr/local/SWEB/cgi-bin
 
 #Configure Caddy Proxy
@@ -91,7 +91,7 @@ echo ":80 {
 service caddy restart
 
 #Download SWEB Manager
-wget -N --no-check-certificate -O /usr/local/bin/sweb https://raw.githubusercontent.com/FunctionClub/SWEB/master/sweb
+wget -N --no-check-certificate -O /usr/local/bin/sweb https://raw.githubusercontent.com/iisure/SWEB/master/sweb
 chmod +x /usr/local/bin/sweb
 
 #Start SWEB in Screen
