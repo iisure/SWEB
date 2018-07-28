@@ -32,7 +32,7 @@
 ## 安装
 
 ```shell
-wget -N --no-check-certificate  https://raw.githubusercontent.com/FunctionClub/SWEB/master/install.sh && bash install.sh
+wget -N --no-check-certificate  https://raw.githubusercontent.com/iisure/SWEB/master/install.sh && bash install.sh
 ```
 
 ## 使用方法
@@ -81,4 +81,5 @@ SSR控制菜单：
 1. 本程序只是个人练手而已，禁止用于商业用途。卖SS没问题，请勿贩卖本程序，请尊重 GPL 协议，谢谢。
 2. 请勿删除版权，你可以修改后**添加**自己的版权，请勿删除原有的底部版权信息，谢谢。
 3. 请别问我写 **多用户SS面板** 个人能力和精力有限，暂时没这个计划。而且降低售卖SS的技术成本，后果你懂的。
+4. By 雨落无声, 我只是借用及修复链接
 
